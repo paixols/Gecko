@@ -1,4 +1,4 @@
-package com.yellowishdev.api.coingecko.di
+package com.yellowishdev.gecko.di.network
 
 import dagger.Module
 import dagger.Provides
@@ -9,27 +9,23 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-object ApiCoingeckoServiceModule {
+object NetworkServiceModule {
 
-    @JvmStatic
     @Singleton
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
-    @JvmStatic
     @Singleton
     @Provides
     fun providesOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient =
         OkHttpClient().newBuilder().addInterceptor(interceptor).build()
 
-    @JvmStatic
     @Singleton
     @Provides
     fun providesGsonConverter(): GsonConverterFactory =
         GsonConverterFactory.create()
 
-    @JvmStatic
     @Singleton
     @Provides
     fun providesRetrofit(
@@ -37,8 +33,8 @@ object ApiCoingeckoServiceModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit =
         Retrofit.Builder()
-            .baseUrl("https://api.coingecko.com/api/v3/")
             .client(httpClient)
+            .baseUrl("http://localhost/")
             .addConverterFactory(gsonConverterFactory)
             .build()
 }

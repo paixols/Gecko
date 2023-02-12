@@ -43,6 +43,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+        freeCompilerArgs = listOf("-Xjvm-default=all")
     }
     buildFeatures {
         compose = true
@@ -63,6 +64,7 @@ dependencies {
     App.modules.forEach { module -> implementation(project(module)) }
 
     Android.implementation.forEach { dependency -> implementation(dependency) }
+    KotlinLibs.implementations.forEach { dependency -> implementation(dependency) }
     Compose.implementation.forEach { dependency -> implementation(dependency) }
 
     Network.implementations.forEach { dependency -> implementation(dependency) }

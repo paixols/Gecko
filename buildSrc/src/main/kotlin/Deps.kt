@@ -1,13 +1,15 @@
 object Versions {
     /*Class Paths*/
     const val gradle = "7.3.1"
-    const val kotlinGradle = "1.6.10"
+    const val kotlin = "1.6.10"
     const val mapsPlatform = "2.0.1"
 
     /*Android - Ktx*/
     const val androidCore = "1.9.0"
     const val lifeCycle = "2.5.1"
     const val appCompat = "1.6.1"
+    const val coroutines = "1.6.4"
+    const val ktx_coroutines = "2.5.1"
 
     /*Compose*/
     const val activity = "1.6.1"
@@ -35,7 +37,7 @@ object Versions {
 object AppClassPaths {
     private const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
     private const val kotlinGradle =
-        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinGradle}"
+        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     private const val mapsPlatform =
         "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:${Versions.mapsPlatform}"
 
@@ -46,10 +48,25 @@ object Android {
     private const val core = "androidx.core:core-ktx:${Versions.androidCore}"
     private const val lifeCycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifeCycle}"
     private const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
+    private const val coroutines =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 
     val implementation = listOf(
         core,
-        lifeCycle
+        lifeCycle,
+        appCompat,
+        coroutines
+    )
+}
+
+object KotlinLibs {
+    private const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    private const val kotlin_coroutines_extension =
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.ktx_coroutines}"
+
+    val implementations = listOf(
+        kotlin,
+        kotlin_coroutines_extension
     )
 }
 

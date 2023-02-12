@@ -40,6 +40,7 @@ android {
 
 dependencies {
     Android.implementation.forEach { dependency -> implementation(dependency) }
+    KotlinLibs.implementations.forEach { dependency -> implementation(dependency) }
 
     Network.implementations.forEach { dependency -> implementation(dependency) }
     Serialization.implementations.forEach { dependency -> implementation(dependency) }

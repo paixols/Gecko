@@ -1,7 +1,9 @@
 package com.yellowishdev.gecko.di
 
 import android.content.Context
-import com.yellowishdev.api.coingecko.di.ApiCoingeckoServiceModule
+import com.yellowishdev.gecko.di.coingecko.CoingeckoComponent
+import com.yellowishdev.gecko.di.network.NetworkServiceModule
+import com.yellowishdev.gecko.di.viewmodel.ViewModelBuilderModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -9,7 +11,9 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
-        ApiCoingeckoServiceModule::class
+        FeatureSubcomponentModule::class,
+        NetworkServiceModule::class,
+        ViewModelBuilderModule::class
     ]
 )
 interface AppComponent {
@@ -19,5 +23,7 @@ interface AppComponent {
         fun create(@BindsInstance applicationContext: Context): AppComponent
     }
 
+    /*Components*/
+    fun createCoingeckoComponent(): CoingeckoComponent.Factory
 
 }
