@@ -1,3 +1,2 @@
-include(":app")
+include(":app", ":api-coingecko")
 rootProject.name = "Gecko"
-
