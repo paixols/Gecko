@@ -1,6 +1,7 @@
 package com.yellowishdev.gecko.di.coingecko
 
-import com.yellowishdev.api.coingecko.repositories.CoinsRepositoryInterface
+import com.yellowishdev.gecko.data.repositories.CoinsRepositoryInterface
+import com.yellowishdev.gecko.data.useCases.CoingeckoCoinListUseCase
 import com.yellowishdev.gecko.data.useCases.CoingeckoServerPingUseCase
 import dagger.Module
 import dagger.Provides
@@ -13,5 +14,11 @@ object CoinsUseCases {
         coinsRepositoryInterface: CoinsRepositoryInterface
     ): CoingeckoServerPingUseCase =
         CoingeckoServerPingUseCase(coinsRepositoryInterface)
+
+    @Provides
+    fun provideCoingeckoCoinListUseCase(
+        coinsRepositoryInterface: CoinsRepositoryInterface
+    ): CoingeckoCoinListUseCase =
+        CoingeckoCoinListUseCase(coinsRepositoryInterface)
 
 }

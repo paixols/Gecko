@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Gecko</string>
+    <string name="server_ping">Establishing marketplace connection</string>
 </resources>
