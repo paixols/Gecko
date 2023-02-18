@@ -30,7 +30,7 @@ class CoinsInformationViewModel @Inject constructor(
     }
 
     private var _coinList = MutableLiveData<List<Coin>>().apply {
-        value = null
+        value = emptyList()
     }
 
     private var _error = MutableLiveData<Exception>().apply {
