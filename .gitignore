@@ -76,4 +76,4 @@ outTmp/
 /test.output
 /kotlin-native/dist
 kotlin-ide/
-buildSrc/build/
+buildSrc/build/*

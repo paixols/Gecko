@@ -1,10 +1,6 @@
-package com.yellowishdev.gecko.app.main
+package com.yellowishdev.gecko.app.ui
 
 import android.content.res.Configuration
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -22,48 +18,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModelProvider
 import com.yellowishdev.gecko.R
-import com.yellowishdev.gecko.app.ProjectGeckoApp
-import com.yellowishdev.gecko.app.viewModels.CoinsInformationViewModel
 import com.yellowishdev.gecko.data.model.Coin
 import com.yellowishdev.gecko.ui.theme.GeckoTheme
 import com.yellowishdev.gecko.utils.DataSet
-import javax.inject.Inject
-
-class MainActivity : ComponentActivity() {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel by viewModels<CoinsInformationViewModel> { viewModelFactory }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        initDependencyInjection()
-
-        setContent {
-            GeckoTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    // TODO: Load Coin List w/Compose + ViewModel
-                }
-            }
-        }
-    }
-
-    private fun initDependencyInjection() {
-        (application as ProjectGeckoApp)
-            .appComponent
-            .createCoingeckoComponent()
-            .create()
-            .inject(activity = this)
-    }
-
-}
 
 /*
 * Compose UI
@@ -107,9 +65,10 @@ fun CoinCard(coin: Coin) {
                 color = surfaceColor
             ) {
                 Text(
-                    text = "Id: ${coin.id}\nSymbol: ${coin.symbol}",
+                    text = "\nId: ${coin.id}\nSymbol: ${coin.symbol}\n",
                     modifier = Modifier.padding(4.dp),
-                    style = MaterialTheme.typography.body2
+                    style = MaterialTheme.typography.body2,
+                    maxLines = if (isExpanded) Int.MAX_VALUE else 1
                 )
             }
 

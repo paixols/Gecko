@@ -1,6 +1,6 @@
 package com.yellowishdev.gecko.di.coingecko
 
-import com.yellowishdev.gecko.app.main.MainActivity
+import com.yellowishdev.gecko.app.MainActivity
 import dagger.Subcomponent
 
 @Subcomponent(
