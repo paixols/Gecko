@@ -17,16 +17,16 @@ class CoingeckoCoinListUseCase @Inject constructor(
         return if (coingeckoResponse is CoingeckoResponse.Coins) {
             val topCoins = mutableListOf<Coin>()
             coingeckoResponse.coinList.filterTo(topCoins) {
-                it.symbol == "btc"              ||  // Bitcoin
-                        it.symbol == "bch"      ||  // Bitcoin cash
-                        it.symbol == "eth"      ||  // Ethereum
-                        it.symbol == "ltc"      ||  // Litecoin
-                        it.symbol == "celo"     ||  // Celo
-                        it.symbol == "usdt"     ||  // Tether
-                        it.symbol == "ada"      ||  // Cardano
-                        it.symbol == "matic"    ||  // Polygon
-                        it.symbol == "doge"     ||  // Doge
-                        it.symbol == "sol"          // Solana
+                (it.symbol == "btc" && it.id == "btc")                          ||  // Bitcoin
+                        (it.symbol == "bch" && it.id == "bitcoin-cash")         ||  // Bitcoin cash
+                        (it.symbol == "eth" && it.id == "ethereum")             ||  // Ethereum
+                        (it.symbol == "ltc" && it.id == "litecoin")             ||  // Litecoin
+                        (it.symbol == "celo" && it.id == "celo")                ||  // Celo
+                        (it.symbol == "usdt" && it.id == "tether")              ||  // Tether
+                        (it.symbol == "ada" && it.id == "cardano")              ||  // Cardano
+                        (it.symbol == "matic" && it.name == "Polygon")          ||  // Polygon
+                        (it.symbol == "doge" && it.id == "dogecoin")            ||  // Doge
+                        (it.symbol == "sol" && it.id == "solana")                   // Solana
             }
             CoingeckoResponse.Coins(coinList = topCoins)
         } else {

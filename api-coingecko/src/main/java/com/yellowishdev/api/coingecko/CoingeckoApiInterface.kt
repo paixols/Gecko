@@ -1,6 +1,7 @@
 package com.yellowishdev.api.coingecko
 
 import com.yellowishdev.api.coingecko.dto.Coin
+import com.yellowishdev.api.coingecko.dto.CoinInformation
 import com.yellowishdev.api.coingecko.dto.Ping
 import com.yellowishdev.api.coingecko.dto.Response
 import retrofit2.http.GET
@@ -12,4 +13,7 @@ interface CoingeckoApiInterface {
 
     @GET
     suspend fun coinList(@Url url: String): List<Coin>
+
+    @GET
+    suspend fun coinMarketData(@Url url: String): CoinInformation
 }

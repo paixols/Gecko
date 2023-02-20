@@ -1,6 +1,7 @@
 package com.yellowishdev.gecko.app
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -35,12 +36,14 @@ class MainActivity : ComponentActivity() {
         viewModel.coinList().observe(this) {
             coinList.value = it
         }
+        viewModel.error().observe(this) {
+            Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun setupUserInterface() {
         setContent {
             GeckoTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background

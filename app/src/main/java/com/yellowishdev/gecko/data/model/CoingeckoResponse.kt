@@ -10,6 +10,10 @@ sealed class CoingeckoResponse {
         val coinList: List<Coin>
     ) : CoingeckoResponse()
 
+    data class CoinMarketData(
+        val marketPricing: CoinMarketPricing
+    ) : CoingeckoResponse()
+
     data class Error(
         val exception: Exception
     ) : CoingeckoResponse()

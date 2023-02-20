@@ -65,7 +65,7 @@ fun CoinCard(coin: Coin) {
                 color = surfaceColor
             ) {
                 Text(
-                    text = "\nId: ${coin.id}\nSymbol: ${coin.symbol}\n",
+                    text = if (isExpanded) formatCoinInformation(coin) else "Tap for market details...",
                     modifier = Modifier.padding(4.dp),
                     style = MaterialTheme.typography.body2,
                     maxLines = if (isExpanded) Int.MAX_VALUE else 1
@@ -75,6 +75,13 @@ fun CoinCard(coin: Coin) {
         }
 
     }
+}
+
+private fun formatCoinInformation(coin: Coin): String {
+    return "\nId: ${coin.id}" +
+            "\nSymbol: ${coin.symbol}" +
+            "\nUSD: ${coin.usdPrice}" +
+            "\nBTC: ${coin.btcPrice}"
 }
 
 @Composable
